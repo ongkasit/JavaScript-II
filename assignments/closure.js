@@ -1,13 +1,23 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
-const company = 'Sasom';
 
-function returnCompany() {
-    return company;
+function facebookLeader() {
+    const CEO = 'Mark Zuckerberg';
+    console.log(`I am the ${CEO}.`);
+
+    function facebookCOO() {
+        const COO = 'Sheryl Sandberg'
+        console.log(`I keep ${CEO} in check.`)
+
+
+        function facebookUsers() {
+            console.log(`We willingly let ${CEO} and ${COO} use our data!`)
+        }
+        facebookUsers();
+    }
+    facebookCOO();
 }
-
-console.log(returnCompany());
-
+facebookLeader();
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */

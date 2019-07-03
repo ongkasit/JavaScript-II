@@ -26,17 +26,19 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
 
 */
 
-
-function getLength(arr, cb) {
+//Higher Order Function
+const getLength = function(arr, cb) {
     // getLength passes the length of the array into the callback.
-    cb(arr.length);
-}
+    //Callback Function
+    cb(arr.length)
+};
 
-getLength(items, (arrayLength) => {
-    console.log(arrayLength);
+getLength(items, function(length) {
+    console.log(length)
 });
 
-function last(arr, cb) {
+
+const last = (arr, cb) => {
     // last passes the last item of the array into the callback.
     cb(arr[arr.length - 1]);
 }
@@ -45,48 +47,51 @@ last(items, (lastItem) => {
     console.log(lastItem);
 });
 
-function sumNums(x, y, cb) {
+
+
+const sumNums = (x, y, cb) => {
     // sumNums adds two numbers (x, y) and passes the result to the callback.
     cb(x + y);
 }
 
-sumNums(2, 4, (sum) => {
-    console.log(sum);
-})
+sumNums(4, 5, (add) => {
+    console.log(add);
+});
 
 function multiplyNums(x, y, cb) {
     // multiplyNums multiplies two numbers and passes the result to the callback.
     cb(x * y);
 }
 
-multiplyNums(240, 409, (multiply) => {
+multiplyNums(89, 24, (multiply) => {
     console.log(multiply);
-})
+});
+
+
+// contains checks if an item is present inside of the given array/list.
+// Pass true to the callback if it is, otherwise pass false.
 
 function contains(item, list, cb) {
-    // contains checks if an item is present inside of the given array/list.
-    // Pass true to the callback if it is, otherwise pass false.
-    for (let i = 0; i < item.length; i++) {
-        if (item[i] === list) {
-            return cb(true);
-        }
+    if (list.includes(item)) {
+        return cb(true);
+    } else {
+        return cb(false);
     }
-    return cb(false);
 };
 
-contains(items, 'Pencil', function(result) {
-    console.log(result ? 'pencil is in the array' : 'pencil is not in the array');
+contains('Pencil', items, (success) => {
+    console.log(success);
 });
+
 
 /* STRETCH PROBLEM */
 
-function removeDuplicates(array, cb) {
-    // removeDuplicates removes all duplicate values from the given array.
-    // Pass the duplicate free array to the callback function.
-    // Do not mutate the original array.
-    return cb(Array.from(new Set(array)));
-};
+// removeDuplicates removes all duplicate values from the given array.
+// Pass the duplicate free array to the callback function.
+// Do not mutate the original array.
 
-removeDuplicates(items, function(uniqueItems) {
-    console.log('items with duplicates removed: ' + uniqueItems);
-});
+const fruits = ['Banana', 'Apple', 'Kiwi', 'Banana', 'Banana'];
+
+const removeDuplicate = fruits.filter((item, index) => fruits.indexOf(item) === index);
+
+console.log(removeDuplicate);
